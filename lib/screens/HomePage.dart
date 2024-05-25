@@ -121,10 +121,12 @@ class _HomepageState extends State<Homepage> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 8.0, bottom: 8),
+            padding: const EdgeInsets.only(top: 8.0, bottom: 8, left:4),
             child: buildtextField(),
           ),
-          isLoading?const Center(child: CircularProgressIndicator(),): Flexible(child: ListView.builder(
+          isLoading?const Center(child: CircularProgressIndicator(),): dataSet.length==0?const Center(child: Text("Kindly search for the repo you're looking for",
+                            style: TextStyle(color: Color.fromARGB(255, 189, 185, 185), fontSize: 16),
+                          ),): Flexible(child: ListView.builder(
             controller: _scrollController,
             itemCount: dataSet.length,
             itemBuilder: (context, index) {
@@ -208,7 +210,7 @@ class _HomepageState extends State<Homepage> {
       // style: kInputTextStyle,
       style: const TextStyle(color: Colors.white, fontSize: 20),
       decoration:  InputDecoration(
-        labelText: 'User Id',
+        labelText: 'Search Repositories',
         floatingLabelBehavior: FloatingLabelBehavior.always,
         labelStyle: const TextStyle(color: Colors.white, fontSize: 20),
         border: OutlineInputBorder(
